@@ -12,7 +12,69 @@ public class MathController {
     public Double sum(
             @PathVariable("numberOne") String numberOne,
             @PathVariable("numberTwo") String numberTwo
-    ){
-        return 1D;
+    )   throws Exception {
+        if(!isNumeric(numberOne) || !isNumeric(numberTwo)) throw new IllegalArgumentException();
+        return convertToDouble(numberOne) + convertToDouble(numberTwo);
+
     }
+    @RequestMapping("/subtraction/{numberOne}/{numberTwo}")
+    public Double subtraction(
+            @PathVariable("numberOne") String numberOne,
+            @PathVariable("numberTwo") String numberTwo
+    ) throws Exception {
+        if(!isNumeric(numberOne) ||!isNumeric(numberTwo)) throw new IllegalArgumentException();
+        return convertToDouble(numberOne) - convertToDouble(numberTwo);
+    }
+
+    @RequestMapping("/multiplication/{numberOne}/{numberTwo}")
+    public Double multiplication(
+            @PathVariable("numberOne") String numberOne,
+            @PathVariable("numberTwo") String numberTwo
+    ) throws Exception {
+        if(!isNumeric(numberOne) || !isNumeric(numberTwo)) throw new IllegalArgumentException();
+        return convertToDouble(numberOne) * convertToDouble(numberTwo);
+    }
+
+    @RequestMapping("/division/{numberOne}/{numberTwo}")
+    public Double division(
+            @PathVariable("numberOne") String numberOne,
+            @PathVariable("numberTwo") String numberTwo
+    ) throws Exception {
+        if(!isNumeric(numberOne) || !isNumeric(numberTwo)
+        ) throw new IllegalArgumentException();
+        return convertToDouble(numberOne) / convertToDouble(numberTwo);
+    }
+
+    @RequestMapping("/mean/{numberOne}/{numberTwo}")
+    public double mean(
+            @PathVariable("numberOne") String numberOne,
+            @PathVariable("numberTwo") String numberTwo
+    ) throws Exception {
+        if(!isNumeric(numberOne) || !isNumeric(numberTwo)
+        ) throw new IllegalArgumentException();
+        return (convertToDouble(numberOne) + convertToDouble(numberTwo))/2;
+    }
+
+    @RequestMapping("/squareRoot/{numberOne}")
+    public Double squareRoot(
+            @PathVariable("numberOne") String numberOne
+    ) throws Exception {
+        if(!isNumeric(numberOne)
+        ) throw new IllegalArgumentException();
+        return Math.sqrt(convertToDouble(numberOne));
+    }
+
+    private Double convertToDouble(String strNumber) throws IllegalArgumentException {
+
+        if (strNumber ==null || strNumber.isEmpty()) throw new IllegalArgumentException();
+        String number = strNumber.replace("," , ".");
+        return Double.parseDouble(number);
+    }
+
+    private boolean isNumeric(String strNumber) {
+        if (strNumber == null || strNumber.isEmpty()) return false;
+        String number = strNumber.replace(",",".");
+        return number.matches("[-+]?[0-9]*\\.?[0-9]+");
+    }
+
 }
