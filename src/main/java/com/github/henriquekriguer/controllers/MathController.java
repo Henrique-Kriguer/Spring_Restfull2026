@@ -4,6 +4,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.github.henriquekriguer.controllers.MathUtils.convertToDouble;
+import static com.github.henriquekriguer.controllers.MathUtils.isNumeric;
+
 @RestController
 @RequestMapping("/math")
 public class MathController {
@@ -63,7 +66,7 @@ public class MathController {
         ) throw new IllegalArgumentException();
         return Math.sqrt(convertToDouble(numberOne));
     }
-
+/*
     private Double convertToDouble(String strNumber) throws IllegalArgumentException {
 
         if (strNumber ==null || strNumber.isEmpty()) throw new IllegalArgumentException();
@@ -76,5 +79,5 @@ public class MathController {
         String number = strNumber.replace(",",".");
         return number.matches("[-+]?[0-9]*\\.?[0-9]+");
     }
-
+*/
 }
