@@ -16,7 +16,7 @@ public class MathController {
             @PathVariable("numberOne") String numberOne,
             @PathVariable("numberTwo") String numberTwo
     )   throws Exception {
-        if(!isNumeric(numberOne) || !isNumeric(numberTwo)) throw new IllegalArgumentException();
+        if(!isNumeric(numberOne) || !isNumeric(numberTwo)) throw new UnsupportedOperationException("please set a numeric value!");
         return convertToDouble(numberOne) + convertToDouble(numberTwo);
 
     }
@@ -25,7 +25,7 @@ public class MathController {
             @PathVariable("numberOne") String numberOne,
             @PathVariable("numberTwo") String numberTwo
     ) throws Exception {
-        if(!isNumeric(numberOne) ||!isNumeric(numberTwo)) throw new IllegalArgumentException();
+        if(!isNumeric(numberOne) ||!isNumeric(numberTwo)) throw new UnsupportedOperationException("please set a numeric value!");
         return convertToDouble(numberOne) - convertToDouble(numberTwo);
     }
 
@@ -34,7 +34,7 @@ public class MathController {
             @PathVariable("numberOne") String numberOne,
             @PathVariable("numberTwo") String numberTwo
     ) throws Exception {
-        if(!isNumeric(numberOne) || !isNumeric(numberTwo)) throw new IllegalArgumentException();
+        if(!isNumeric(numberOne) || !isNumeric(numberTwo)) throw new UnsupportedOperationException("please set a numeric value!");
         return convertToDouble(numberOne) * convertToDouble(numberTwo);
     }
 
