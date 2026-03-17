@@ -3,7 +3,8 @@ package com.github.henriquekriguer.controllers;
 public class MathUtils {
 
     public static Double convertToDouble(String strNumber) {
-        if (strNumber == null || strNumber.isEmpty()) throw new IllegalArgumentException();
+        if (strNumber == null || strNumber.isEmpty())
+            throw new IllegalArgumentException("Please set a numeric value ! ");
         String number = strNumber.replace(",", ".");
         return Double.parseDouble(number);
     }

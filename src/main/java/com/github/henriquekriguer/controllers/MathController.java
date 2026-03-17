@@ -44,7 +44,7 @@ public class MathController {
             @PathVariable("numberTwo") String numberTwo
     ) throws Exception {
         if(!isNumeric(numberOne) || !isNumeric(numberTwo)
-        ) throw new IllegalArgumentException();
+        ) throw new IllegalArgumentException("please set a numeric value!");
         return convertToDouble(numberOne) / convertToDouble(numberTwo);
     }
 
@@ -54,7 +54,7 @@ public class MathController {
             @PathVariable("numberTwo") String numberTwo
     ) throws Exception {
         if(!isNumeric(numberOne) || !isNumeric(numberTwo)
-        ) throw new IllegalArgumentException();
+        ) throw new IllegalArgumentException("please set a numeric value!");
         return (convertToDouble(numberOne) + convertToDouble(numberTwo))/2;
     }
 
@@ -63,7 +63,7 @@ public class MathController {
             @PathVariable("numberOne") String numberOne
     ) throws Exception {
         if(!isNumeric(numberOne)
-        ) throw new IllegalArgumentException();
+        ) throw new IllegalArgumentException("please set a numeric value!");
         return Math.sqrt(convertToDouble(numberOne));
     }
 /*
