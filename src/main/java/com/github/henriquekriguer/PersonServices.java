@@ -27,15 +27,15 @@ public class PersonServices {
 
         Person person = new Person();
         person.setId(counter.incrementAndGet());
-        person.setFirstName("Person Name " + i);
-        person.setLastName("Person Last Name " + i);
+        person.setFirstName("First name " + i);
+        person.setLastName("Last Name " + i);
         person.setAddress("Some Address in Brazil " + i);
         person.setGender("Male");
         return person;
     }
 
     public Person findById(String id){
-        logger.info("Finding one Peerson!");
+        logger.info("Finding one Person!");
 
         Person person = new Person();
         person.setId(counter.incrementAndGet());
