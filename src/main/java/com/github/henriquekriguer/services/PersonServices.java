@@ -1,4 +1,4 @@
-package com.github.henriquekriguer;
+package com.github.henriquekriguer.services;
 
 import com.github.henriquekriguer.model.Person;
 import org.springframework.stereotype.Service;

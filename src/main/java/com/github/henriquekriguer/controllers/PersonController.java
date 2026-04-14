@@ -1,6 +1,6 @@
 package com.github.henriquekriguer.controllers;
 
-import com.github.henriquekriguer.PersonServices;
+import com.github.henriquekriguer.services.PersonServices;
 import com.github.henriquekriguer.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
