@@ -15,3 +15,7 @@ spring:
     show-sql: false
 server:
   port: 9090
+logging:
+  level:
+    org.hibernate.tool.schema: DEBUG
+    org.hibernate.SQL: DEBUG
