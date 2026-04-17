@@ -11,11 +11,7 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: false
+    open-in-view: false
 server:
   port: 9090
-logging:
-  level:
-    org.hibernate.tool.schema: DEBUG
-    org.hibernate.SQL: DEBUG
