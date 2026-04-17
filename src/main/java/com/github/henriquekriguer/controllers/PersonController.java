@@ -14,6 +14,14 @@ public class PersonController {
 
     @Autowired
     private PersonServices service;
+    // private PersonServices service = new PersonServices();
+
+    @RequestMapping(
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Person> findAll() {
+        return service.findAll();
+    }
 
     //http://localhost:9090/person/1
     @RequestMapping(value = "/{id}",
@@ -49,8 +57,5 @@ public class PersonController {
         service.delete(id);
     }
 
-    @RequestMapping(value = "")
-        public List<Person> findAll() {
-            return service.findAll();
-    }
+
 }
