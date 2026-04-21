@@ -28,6 +28,7 @@ public class PersonController {
         produces = MediaType.APPLICATION_JSON_VALUE
     )
     public Person findById(@PathVariable("id") Long id) {
+
         return service.findById(id);
     }
 
@@ -36,6 +37,7 @@ public class PersonController {
         produces = MediaType.APPLICATION_JSON_VALUE
     )
     public Person create( @RequestBody Person person) {
+
         return service.create(person);
     }
 
