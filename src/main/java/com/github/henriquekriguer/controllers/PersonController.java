@@ -1,6 +1,7 @@
 package com.github.henriquekriguer.controllers;
 
-import com.github.henriquekriguer.data.dto.PersonDTO;
+import com.github.henriquekriguer.data.dto.v1.PersonDTO;
+import com.github.henriquekriguer.data.dto.v2.PersonDTOV2;
 import com.github.henriquekriguer.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -8,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-//http://localhost:9090/person/1
+//http://localhost:9090/person
 @RestController
 @RequestMapping("/person")
 public class PersonController {
@@ -39,6 +40,14 @@ public class PersonController {
     public PersonDTO create( @RequestBody PersonDTO person) {
 
         return service.create(person);
+    }
+    @PostMapping( name = "/v2",
+        consumes = MediaType.APPLICATION_JSON_VALUE,
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public PersonDTOV2 create(@RequestBody PersonDTOV2 person) {
+
+        return service.createV2(person);
     }
 
     @PutMapping(

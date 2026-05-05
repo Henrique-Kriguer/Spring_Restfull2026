@@ -1,9 +1,12 @@
 package com.github.henriquekriguer.services;
 
-import com.github.henriquekriguer.data.dto.PersonDTO;
+import com.github.henriquekriguer.data.dto.v1.PersonDTO;
+import com.github.henriquekriguer.data.dto.v2.PersonDTOV2;
 import com.github.henriquekriguer.exception.ResourceNotFoundException;
 import static com.github.henriquekriguer.mapper.ObjectMapper.parseListObjects;
 import static com.github.henriquekriguer.mapper.ObjectMapper.parseObject;
+
+import com.github.henriquekriguer.mapper.custom.PersonMapper;
 import com.github.henriquekriguer.model.Person;
 import com.github.henriquekriguer.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,9 @@ public class PersonServices {
     @Autowired
     PersonRepository repository;
 
+    @Autowired
+    PersonMapper converter;
+
     public List<PersonDTO> findAll(){
         logger.info("Finding all people!");
         return parseListObjects(repository.findAll(), PersonDTO.class);
@@ -41,8 +47,15 @@ public class PersonServices {
         logger.info("Creating a new Person!");
         var entity =  parseObject(person, Person.class);
         return parseObject(repository.save(entity), PersonDTO.class);
+    }
 
-    }public PersonDTO update(PersonDTO person){
+    public PersonDTOV2 createV2(PersonDTOV2 person){
+        logger.info("Creating a new Person V2!");
+        var entity =  converter.convertDTOToEntity(person);
+        return converter.convertEntityToDTO(repository.save(entity));
+    }
+
+    public PersonDTO update(PersonDTO person){
         logger.info("Updating a Person!");
         Person entity = repository.findById(person.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this Id!"));
