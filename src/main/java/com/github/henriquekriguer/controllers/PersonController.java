@@ -41,11 +41,11 @@ public class PersonController {
 
         return service.create(person);
     }
-    @PostMapping( name = "/v2",
+    @PostMapping( value = "/v2",
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public PersonDTOV2 create(@RequestBody PersonDTOV2 person) {
+    public PersonDTOV2 createV2(@RequestBody PersonDTOV2 person) {
 
         return service.createV2(person);
     }
