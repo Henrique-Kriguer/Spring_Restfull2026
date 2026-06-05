@@ -16,7 +16,7 @@ public class WebConfig implements WebMvcConfigurer {
       //
       //Via query Params:
       // http://localhost:9090/api/person/v1/2?mediaType=xml or http://localhost:9090/api/person/v1/2?mediaType=json
-
+        /**
         configurer.favorParameter(true)
                 .parameterName("mediaType")
                 .ignoreAcceptHeader(true)
@@ -24,5 +24,16 @@ public class WebConfig implements WebMvcConfigurer {
                 .defaultContentType(MediaType.APPLICATION_JSON)
                 .mediaType("json",  MediaType.APPLICATION_JSON)
                 .mediaType("xml",  MediaType.APPLICATION_XML);
+         */
+        //Via Header Params:
+               // http://localhost:9090/api/person/v1/2
+         configurer.favorParameter(false)
+         .ignoreAcceptHeader(false)
+         .useRegisteredExtensionsOnly(false)
+         .defaultContentType(MediaType.APPLICATION_JSON)
+         .mediaType("json",  MediaType.APPLICATION_JSON)
+         .mediaType("xml",  MediaType.APPLICATION_XML)
+         .mediaType("yaml",  MediaType.APPLICATION_YAML);
+
     }
 }
