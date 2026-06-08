@@ -1,5 +1,6 @@
 package com.github.henriquekriguer.services;
 
+import com.github.henriquekriguer.controllers.PersonController;
 import com.github.henriquekriguer.data.dto.v1.PersonDTO;
 import com.github.henriquekriguer.data.dto.v2.PersonDTOV2;
 import com.github.henriquekriguer.exception.ResourceNotFoundException;
@@ -9,6 +10,9 @@ import static com.github.henriquekriguer.mapper.ObjectMapper.parseObject;
 import com.github.henriquekriguer.mapper.custom.PersonMapper;
 import com.github.henriquekriguer.model.Person;
 import com.github.henriquekriguer.repository.PersonRepository;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -40,7 +44,9 @@ public class PersonServices {
 
         var entity = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this Id!"));
-        return parseObject(entity, PersonDTO.class);
+        var dto = parseObject(entity, PersonDTO.class);
+        dto.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel().withType("GET"));
+        return dto;
     }
 
     public PersonDTO create(PersonDTO person){
