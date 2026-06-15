@@ -36,7 +36,9 @@ public class PersonServices {
 
     public List<PersonDTO> findAll(){
         logger.info("Finding all people!");
-        return parseListObjects(repository.findAll(), PersonDTO.class);
+        var persons =  parseListObjects(repository.findAll(), PersonDTO.class);
+        persons.forEach( this::addHateoasLinks);
+        return persons;
     }
 
     public PersonDTO findById(Long id){
@@ -45,14 +47,24 @@ public class PersonServices {
         var entity = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this Id!"));
         var dto = parseObject(entity, PersonDTO.class);
-        dto.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel().withType("GET"));
+        addHateoasLinks(dto);
         return dto;
+    }
+
+    private void addHateoasLinks( PersonDTO dto) {
+        dto.add(linkTo(methodOn(PersonController.class).findById(dto.getId())).withSelfRel().withType("GET"));
+        dto.add(linkTo(methodOn(PersonController.class).findAll()).withRel("findAll").withType("GET"));
+        dto.add(linkTo(methodOn(PersonController.class).create(dto)).withRel("create").withType("POST"));
+        dto.add(linkTo(methodOn(PersonController.class).update(dto)).withRel("update").withType("PUT"));
+        dto.add(linkTo(methodOn(PersonController.class).delete(dto.getId())).withRel("delete").withType("DELETE"));
     }
 
     public PersonDTO create(PersonDTO person){
         logger.info("Creating a new Person!");
         var entity =  parseObject(person, Person.class);
-        return parseObject(repository.save(entity), PersonDTO.class);
+        var dto = parseObject(repository.save(entity), PersonDTO.class);
+        addHateoasLinks(dto);
+        return dto;
     }
 
     public PersonDTOV2 createV2(PersonDTOV2 person){
@@ -69,7 +81,9 @@ public class PersonServices {
         entity.setLastName(person.getLastName());
         entity.setAddress(person.getAddress());
         entity.setGender(person.getGender());
-        return parseObject(repository.save(entity), PersonDTO.class);
+        var dto =  parseObject(repository.save(entity), PersonDTO.class);
+        addHateoasLinks(dto);
+        return dto;
     }
 
     public void delete(Long id){
