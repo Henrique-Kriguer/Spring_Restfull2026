@@ -3,6 +3,7 @@ package com.github.henriquekriguer.services;
 import com.github.henriquekriguer.controllers.PersonController;
 import com.github.henriquekriguer.data.dto.v1.PersonDTO;
 import com.github.henriquekriguer.data.dto.v2.PersonDTOV2;
+import com.github.henriquekriguer.exception.RequiredObjectIsNullException;
 import com.github.henriquekriguer.exception.ResourceNotFoundException;
 import static com.github.henriquekriguer.mapper.ObjectMapper.parseListObjects;
 import static com.github.henriquekriguer.mapper.ObjectMapper.parseObject;
@@ -58,6 +59,7 @@ public class PersonServices {
     }
 
     public PersonDTO create(PersonDTO person){
+        if(person==null) throw new RequiredObjectIsNullException();
         logger.info("Creating a new Person!");
         var entity =  parseObject(person, Person.class);
         var dto = parseObject(repository.save(entity), PersonDTO.class);
@@ -72,6 +74,7 @@ public class PersonServices {
     }
 
     public PersonDTO update(PersonDTO person){
+        if(person==null) throw new RequiredObjectIsNullException();
         logger.info("Updating a Person!");
         Person entity = repository.findById(person.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this Id!"));
