@@ -1,16 +1,15 @@
 package com.github.henriquekriguer.config;
-/*
+
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.OpenAPI;
-*/
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//@Configuration
-
+@Configuration
 public class OpenApiConfig {
-/*
+
 
     @Bean
     OpenAPI customAPI(){
@@ -27,5 +26,5 @@ public class OpenApiConfig {
                 );
         return v1;
 
-    }*/
+    }
 }
