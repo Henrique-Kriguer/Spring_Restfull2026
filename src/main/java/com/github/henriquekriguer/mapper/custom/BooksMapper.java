@@ -9,7 +9,7 @@ public class BooksMapper {
         BooksDTO bdto = new BooksDTO();
         bdto.setId(books.getId());
         bdto.setAuthor(books.getAuthor());
-        bdto.setLaunch_date(books.getLaunch_date().toString());
+        bdto.setLaunchDate(books.getLaunchDate());
         bdto.setTitle(books.getTitle());
         bdto.setPrice(books.getPrice());
         return bdto;
@@ -19,7 +19,7 @@ public class BooksMapper {
         Books entity = new Books();
         entity.setId(books.getId());
         entity.setAuthor(books.getAuthor());
-        entity.setLaunch_date(java.sql.Date.valueOf(books.getLaunch_date()));
+        entity.setLaunchDate(books.getLaunchDate());
         entity.setTitle(books.getTitle());
         entity.setPrice(books.getPrice());
         return entity;

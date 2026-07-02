@@ -11,8 +11,8 @@ public class BooksDTO extends RepresentationModel<BooksDTO> implements Serializa
 
     private Long id;
     private String author;
-    private String launch_date;
-    private Long price;
+    private String launchDate;
+    private Double price;
     private String title;
 
     public BooksDTO() {
@@ -34,19 +34,19 @@ public class BooksDTO extends RepresentationModel<BooksDTO> implements Serializa
         this.author = author;
     }
 
-    public String getLaunch_date() {
-        return launch_date;
+    public String getLaunchDate() {
+        return launchDate;
     }
 
-    public void setLaunch_date(String launch_date) {
-        this.launch_date = launch_date;
+    public void setLaunchDate(String launchDate) {
+        this.launchDate = launchDate;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -63,11 +63,11 @@ public class BooksDTO extends RepresentationModel<BooksDTO> implements Serializa
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         BooksDTO booksDTO = (BooksDTO) o;
-        return Objects.equals(getId(), booksDTO.getId()) && Objects.equals(getAuthor(), booksDTO.getAuthor()) && Objects.equals(getLaunch_date(), booksDTO.getLaunch_date()) && Objects.equals(getPrice(), booksDTO.getPrice()) && Objects.equals(getTitle(), booksDTO.getTitle());
+        return Objects.equals(getId(), booksDTO.getId()) && Objects.equals(getAuthor(), booksDTO.getAuthor()) && Objects.equals(getLaunchDate(), booksDTO.getLaunchDate()) && Objects.equals(getPrice(), booksDTO.getPrice()) && Objects.equals(getTitle(), booksDTO.getTitle());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getId(), getAuthor(), getLaunch_date(), getPrice(), getTitle());
+        return Objects.hash(super.hashCode(), getId(), getAuthor(), getLaunchDate(), getPrice(), getTitle());
     }
 }
