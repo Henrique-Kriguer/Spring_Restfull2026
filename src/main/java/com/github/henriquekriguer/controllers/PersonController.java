@@ -19,7 +19,9 @@ public class PersonController implements PersonControllerDocs {
     @Autowired
     private PersonServices service;    // private PersonServices service = new PersonServices();
 
-    @GetMapping( produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
+    @GetMapping( produces = {MediaType.APPLICATION_JSON_VALUE,
+                            MediaType.APPLICATION_XML_VALUE,
+                            MediaType.APPLICATION_YAML_VALUE})
     @Override
     public List<PersonDTO> findAll() {
         return service.findAll();
@@ -27,7 +29,9 @@ public class PersonController implements PersonControllerDocs {
 
     //http://localhost:9090/person/1
     @GetMapping(value = "/{id}",
-            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
+            produces = {MediaType.APPLICATION_JSON_VALUE,
+                        MediaType.APPLICATION_XML_VALUE,
+                        MediaType.APPLICATION_YAML_VALUE})
     @Override
     public PersonDTO findById(@PathVariable("id") Long id) {
 //        var person = service.findById(id);
@@ -40,8 +44,12 @@ public class PersonController implements PersonControllerDocs {
     }
 
     @PostMapping(
-            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
+            consumes = {MediaType.APPLICATION_JSON_VALUE,
+                        MediaType.APPLICATION_XML_VALUE,
+                        MediaType.APPLICATION_YAML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE,
+                        MediaType.APPLICATION_XML_VALUE,
+                        MediaType.APPLICATION_YAML_VALUE})
     @Override
     public PersonDTO create(@RequestBody PersonDTO person) {
         return service.create(person);
@@ -56,8 +64,12 @@ public class PersonController implements PersonControllerDocs {
 //    }
 
     @PutMapping(
-            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
+            consumes = {MediaType.APPLICATION_JSON_VALUE,
+                        MediaType.APPLICATION_XML_VALUE,
+                        MediaType.APPLICATION_YAML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE,
+                        MediaType.APPLICATION_XML_VALUE,
+                        MediaType.APPLICATION_YAML_VALUE})
     @Override
     public PersonDTO update(@RequestBody PersonDTO person) {
 

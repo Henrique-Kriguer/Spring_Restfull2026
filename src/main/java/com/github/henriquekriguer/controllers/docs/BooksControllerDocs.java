@@ -16,9 +16,9 @@ import java.util.List;
 
 public interface BooksControllerDocs {
 
-    @Operation(summary = "Finds all people",
-            description = "Finds all people",
-            tags = {"People Endpoint"},
+    @Operation(summary = "Finds all books",
+            description = "Finds all books",
+            tags = {"Books Endpoint"},
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -37,7 +37,7 @@ public interface BooksControllerDocs {
     List<BooksDTO> findAll();
 
     //http://localhost:9090/Books/1
-   @Operation(summary = "Finds a Books",
+   @Operation(summary = "Finds a Book",
             description = "Finds a specific Books by your ID number",
             tags = {"Books Endpoint"},
             responses = {
@@ -56,7 +56,7 @@ public interface BooksControllerDocs {
 
     @Operation(summary = "Create a Books data",
             description = "Creating a Books",
-            tags = {"Create Books Endpoint"},
+            tags = {"Books Endpoint"},
             responses = {
                     @ApiResponse(
                             responseCode = "200",

@@ -20,8 +20,8 @@ public class OpenApiConfig {
                         .description("Person Service REST API: A lightweight JSON API for managing Person resources. It offers CRUD endpoints (GET /persons, GET /persons/{id}, POST /persons, PUT/PATCH /persons/{id}, DELETE /persons/{id}) with pagination, filtering, input validation, and standard HTTP status codes. Optional authentication (e.g., JWT) and clear error responses make it suitable for user profiles and contact management.")
                         .termsOfService("https://github.com/Henrique-Kriguer")
                         .license(new License()
-                                .name("Apache 2.0")
-                                .url("git@github.com:Henrique-Kriguer/Spring_Restfull2026.git")
+                        .name("Apache 2.0")
+                        .url("git@github.com:Henrique-Kriguer/Spring_Restfull2026.git")
                         )
                 );
         return v1;

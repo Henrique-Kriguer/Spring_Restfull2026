@@ -37,7 +37,7 @@ public interface PersonControllerDocs {
     //http://localhost:9090/person/1
    @Operation(summary = "Finds a person",
             description = "Finds a specific person by your ID number",
-            tags = {"Person Endpoint"},
+            tags = {"People Endpoint"},
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -54,7 +54,7 @@ public interface PersonControllerDocs {
 
     @Operation(summary = "Create a person data",
             description = "Creating a person",
-            tags = {"Create Person Endpoint"},
+            tags = {"People Endpoint"},
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -71,7 +71,7 @@ public interface PersonControllerDocs {
 
     @Operation(summary = "Update a specific person´s data",
             description = "Update a person´s data by passing in a JSON, XML or YAML representation of the UPDATED person",
-            tags = {"Person Endpoint"},
+            tags = {"People Endpoint"},
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -88,7 +88,7 @@ public interface PersonControllerDocs {
 
     @Operation(summary = "Delete a person",
             description = "Delete a specific person by your ID number",
-            tags = {"Person Endpoint"},
+            tags = {"People Endpoint"},
             responses = {
                     @ApiResponse(
                             responseCode = "200",
