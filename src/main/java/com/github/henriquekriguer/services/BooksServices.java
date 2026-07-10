@@ -47,7 +47,7 @@ public class BooksServices {
     }
 
     public BooksDTO create(BooksDTO books){
-        if(books == null) throw new RequiredObjectIsNullException("BooksDTO object is null");
+        if(books == null) throw new RequiredObjectIsNullException();
         logger.info("creating books!");
         var entity = parseObject(books, Books.class);
         var dto = parseObject(booksRepository.save(entity), BooksDTO.class);
@@ -56,7 +56,7 @@ public class BooksServices {
     }
 
     public BooksDTO update(BooksDTO books){
-        if(books == null) throw new RequiredObjectIsNullException("BooksDTO object is null");
+        if(books == null) throw new RequiredObjectIsNullException();
         logger.info("updating books!");
         Books entity = booksRepository.findById(books.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this Id!"));
